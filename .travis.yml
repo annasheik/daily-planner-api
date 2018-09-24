@@ -1,0 +1,11 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: ZXMGgGJUR1zrtjSNE5puAyZPhmJ3FriDfURiVbCDtDCFnEJ62Vevxk4n453LmNQF+dx4kYTRHSINR2a8w4hjXwmlvX6KjIxwIM9J2OC3k2ZWI0qS3K48R9rFPgF9GcgjR7LGtQ+7QUlmkHDcwPGNzSlF2MudEcBbyDrfpTtfDSffLZuy/gWNLZ3EXQk0H0n23KwqgZhRyDfIbs6wAVXeyb2mXRPzHUdQkvLonpU6qwGhulAc6f6xkmJ5iUkDw4QSK7Nz4cLyCX+uiuzxAx7nz+oSIIK3vfz8JqhUxJQvyYkiAWMfAxTDMKUrmatiypq2gvg70lRNVXQT3APnNMPN38f5iMqA/UF0pOzZs0aXZW6GyYMHIoxxYBkbHGrfj3P9WAgcm1HXiihPr9/oFHi82dRIppTzw4xTv2IORFav+5jDnUwb+UFqs9ovQGBfVaWM9NE80zK8NIDGd1hrO5SK1HMQjn+FOlIz9ZL8mHapJQNdyVoCPgdNFthC5HoKDwBKhFiseHBP3S/joUAV/PNX6yCjEUA4vHvz/81f6HlpZ1HHgFsr/QSIzHL9lsg+LzVrd1aMTAg0YBqo47zumkLWtCcD6Cv2TSFX4dEtu6qrl5H98HbOvRJO73p/sZ/liFJlnH9yj4zPTml8QEERVlIn5Rxa+wjqf7vMc0/OeO1T58A=
+  app: daily-planner-app
+  on:
+    repo: annasheik/daily-planner-api
