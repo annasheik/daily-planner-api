@@ -2,12 +2,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const {PORT, DATABASE_URL} = require('./config');
+const {PORT, DATABASE_URL, CLIENT_ORIGIN} = require('./config');
 //const {Task} = require('./models');
 
 //CORS
 const cors = require('cors');
-const {CLIENT_ORIGIN} = require('./config');
 
 app.use(
     cors({
@@ -15,7 +14,7 @@ app.use(
     })
 );
 
- const PORT = process.env.PORT || 3000;
+ 
 
  app.get('/api/*', (req, res) => {
    res.json({ok: true});
