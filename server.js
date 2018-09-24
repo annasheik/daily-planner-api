@@ -1,5 +1,11 @@
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+const {PORT, DATABASE_URL} = require('./config');
+//const {Task} = require('./models');
+
+//CORS
 const cors = require('cors');
 const {CLIENT_ORIGIN} = require('./config');
 
