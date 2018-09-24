@@ -8,15 +8,6 @@ const taskSchema = mongoose.Schema({
 })
 
 
-
-
-{
-  tasks: {
-    "8484820023": ["hello"],
-    "9249232342": ["hello2", "eee"]
-  }
-}
-
 const Task = {
 	"84765357": ["Doctor appointment", "Finish React Project"],
 	"54368732": ["Dog", "Hello"],
