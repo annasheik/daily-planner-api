@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const {PORT, DATABASE_URL, CLIENT_ORIGIN} = require('./config');
-const {Task} = require('./models');
+
 
 const {router: tasksRouter} = require('./tasks');
 
