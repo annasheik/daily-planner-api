@@ -5,11 +5,14 @@ const {Task} = require('./models');
 
 const router = express.Router();
 router.use(express.json());
+const passport = require('passport');
+const jwtAuth = passport.authenticate('jwt', { session: false });
+router.use(jwtAuth);
 
 //GET request
 router.get('/', (req, res) => {
 	Task
-	.find()
+	.find({username: req.user.username})
 	.then(tasks => {
 		res.json({tasks : Task.groupByDate(tasks)})
 	})
@@ -29,7 +32,7 @@ router.post('/', (req, res) => {
 	}
 	Task
 	.create({
-		//username: req.user.username,
+		username: req.user.username,
 		text: req.body.text
 	})
 	.then(tasks => res.status(201).json(tasks.serialize))
@@ -44,14 +47,14 @@ router.delete('/:id', (req, res) => {
 	Task
 	.findById(req.params.id)
 	.then(function(task) {
-		//if (req.user.username = task.username) {
+		 if (req.user.username = task.username) {
 			Task
 			.findByIdAndRemove(req.params.id)
 			.then(task => res.status(204).end())
-		//}
-		//else {
-		//	res.status(401).json({message: 'Unauthorized user'})
-//
+		 }
+		else {
+			res.status(401).json({message: 'Unauthorized user'})
+		}
 	})
 	.catch(err => res.status(500).json({message: 'Internal server error'}))
 })

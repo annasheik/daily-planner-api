@@ -8,14 +8,6 @@ const taskSchema = mongoose.Schema({
 	username: String
 })
 
-
-//const Task = {
-//	"tasks":[  
-//	{"84765357": ["Doctor appointment", "Finish React Project"]},
-//	{"54368732": ["Dog", "Hello"]},
-//	{"73632388": ["Hello2", "Fix the phone"]}
-//	]
-//}
 function groupBy(list, keyGetter) {
     const map = new Map();
     list.forEach((item) => {
@@ -42,10 +34,8 @@ function mapToObject(map) {
 }
 
 taskSchema.statics.groupByDate = function(tasks) {
-	
 	const taskText = mapToObject(groupBy(tasks, tasksByDate));
 	return taskText;
-
 }  
 
 //Task.find().then(tasks => Tasks.groupByDate(tasks))

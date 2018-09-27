@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
@@ -36,7 +37,7 @@ app.use('/api/auth/', authRouter);
 app.use('*', function (req, res) {
   res.status(404).json({ message: 'Not Found' });
 });
- 
+
 // RUN / CLOSE SERVER
 
 let server;
