@@ -17,7 +17,7 @@ chai.use(chaiHttp);
 function generateTasks() {
 	// Generate an object representing Tasks
 	return {
-		text: faker.random.words(),
+		text: [faker.random.words()],
 		username
 	}
 };

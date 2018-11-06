@@ -4,6 +4,8 @@ const express = require('express');
 const {Task} = require('./models');
 
 const router = express.Router();
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 router.use(express.json());
 const passport = require('passport');
 const jwtAuth = passport.authenticate('jwt', { session: false });
@@ -24,7 +26,7 @@ router.get('/', (req, res) => {
 });
 
 //POST request
-router.post('/', (req, res) => {
+router.post('/', jsonParser, (req, res) => {
 	const requiredField = 'text';
 	if(!(requiredField in req.body)) {
 		console.error('Missing Text field');
@@ -33,12 +35,16 @@ router.post('/', (req, res) => {
 	Task
 	.create({
 		username: req.user.username,
-		text: req.body.text
+		text: req.body.text,
+		date: req.body.date
 	})
-	.then(tasks => res.status(201).json(tasks.serialize))
+	.then(tasks => {
+		//console.log(res.json(tasks.serialize()))
+		return res.status(201).json(tasks.serialize())
+	})
 	.catch(err => {
 		console.error(err);
-		res.status(500).json({message: 'Internal service error'})
+		return res.status(500).json({message: 'Internal service error'})
 	})
 })
 

@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 
 const taskSchema = mongoose.Schema({
-	date: {type: Date, default: new Date().setHours(0,0,0,0)},
+	date: String, //{type: Date, default: new Date(new Date().setHours(0,0,0,0))},
 	text: {type: String, required: true},
 	username: String
 })
@@ -22,7 +22,7 @@ function groupBy(list, keyGetter) {
     return map;
 }
 function tasksByDate(task) {
-	return task.date.getTime();
+	return task.date;
 }
 
 function mapToObject(map) {
