@@ -19,6 +19,7 @@ function generateTasks() {
 	return {
 		text: [faker.random.words()],
 		username
+		//date: faker.date.future()
 	}
 };
 function seedOneTask() {
@@ -108,7 +109,7 @@ describe('Tasks API resource', function() {
 				expect(res.body.tasks[taskDate]).to.have.lengthOf.at.least(1);
 				res.body.tasks[taskDate].forEach(function(task) {
 					expect(task).to.be.a('object');
-					expect(task).to.include.keys('id', 'text', 'date');
+					expect(task).to.include.keys('id', 'text', 'username');
 				});
 				resTask = res.body.tasks[taskDate];
 				oneTask =resTask[0];

@@ -8,7 +8,7 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe('API', function() {
-	before(function () {
+	before(function() {
     return runServer(TEST_DATABASE_URL);
   });
 
